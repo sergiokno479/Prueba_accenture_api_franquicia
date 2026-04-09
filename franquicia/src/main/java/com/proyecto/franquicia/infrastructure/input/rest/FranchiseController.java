@@ -24,16 +24,12 @@ public class FranchiseController {
         // Mapeo manual de DTO a Dominio
         Franchise franchiseToCreate = new Franchise(null, request.name());
         
-        return franchiseUseCase.addFranchise(franchiseToCreate)
-                .map(created -> new FranchiseResponse(created.id(), created.name()));
+        return franchiseUseCase.addFranchise(franchiseToCreate).map(created -> new FranchiseResponse(created.id(), created.name()));
     }
 
     @PatchMapping("/{id}/name")
-    public Mono<FranchiseResponse> updateFranchiseName(
-            @PathVariable Long id, 
-            @RequestBody FranchiseRequest request) {
+    public Mono<FranchiseResponse> updateFranchiseName(@PathVariable Long id, @RequestBody FranchiseRequest request) {
         
-        return franchiseUseCase.updateFranchiseName(id, request.name())
-                .map(updated -> new FranchiseResponse(updated.id(), updated.name()));
+        return franchiseUseCase.updateFranchiseName(id, request.name()).map(updated -> new FranchiseResponse(updated.id(), updated.name()));
     }
 }
