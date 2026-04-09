@@ -72,8 +72,13 @@ Endpoints Principales:
 
 Método,Endpoint,Descripción
 POST,/api/franchises,Crear una nueva franquicia
+
 POST,/api/branches,Agregar sucursal a una franquicia
+
 POST,/api/products,Agregar producto a una sucursal
+
 DELETE,/api/products/{id},Eliminar un producto
+
 PATCH,/api/products/{id}/stock,Modificar stock de un producto
+
 GET,/api/products/max-stock/franchise/{id},Producto con más stock por sucursal
