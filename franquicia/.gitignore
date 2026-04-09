@@ -4,6 +4,14 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+*.tfvars
+*.tfvars.json
+
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
 ### STS ###
 .apt_generated
 .classpath
@@ -31,3 +39,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### System Files ###
+.DS_Store
+Thumbs.db
