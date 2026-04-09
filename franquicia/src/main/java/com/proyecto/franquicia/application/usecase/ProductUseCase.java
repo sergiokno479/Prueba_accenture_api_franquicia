@@ -13,9 +13,9 @@ public class ProductUseCase {
         this.productRepositoryPort = productRepositoryPort;
     }
 
-    public Mono<Product> addProduct(Product product) {
+    public Mono<Product> addProduct(Product product) { 
         return productRepositoryPort.save(product);
-    }
+    } 
 
     public Mono<Void> removeProduct(Long id) {
         return productRepositoryPort.deleteById(id);
