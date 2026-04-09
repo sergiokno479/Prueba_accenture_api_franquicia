@@ -1,6 +1,5 @@
-version: '3.8'
-
 services:
+  
   # la db de MySQL
   mysql-db:
     image: mysql:8.0
@@ -10,17 +9,25 @@ services:
       MYSQL_DATABASE: "franchise_db"
     ports:
       - "3307:3306" # XAMPP que usa el 3306
+    # Healthcheck a la base de datos
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # API
   franchise-api:
     build: .
     container_name: franchise-api
+    # esperar a que la BD este funcionando
     depends_on:
-      - mysql-db 
+      mysql-db:
+        condition: service_healthy
     ports:
       - "8080:8080"
     environment:
-      # inyectamos las variables de application.properties
+     # inyectamos las variables de application.properties
       - DB_HOST=mysql-db
       - DB_PORT=3306
       - DB_NAME=franchise_db
